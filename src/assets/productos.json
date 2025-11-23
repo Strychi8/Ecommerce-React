@@ -1,0 +1,68 @@
+{
+  "productos": [
+    {
+    "nombre": "Auricular Gamer",
+    "descripcion": "Auricular Gamer Razer Barracuda X Chroma Negro Inalámbrico",
+    "marca": "Razer",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/Auricular-Gamer-Razer-Barracuda-X-Chroma-Negro_49741_1.jpeg",
+    "precio": "220.000",
+    "id": "1"
+  },
+  {
+    "nombre": "Mouse Gamer",
+    "descripcion": "Mouse Gamer Inalámbrico Logitech G Pro X Superlight Negro",
+    "marca": "Logitech",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/Mouse-Gamer-Logitech-G-Pro-X-Superlight-Negro_40418_1.jpeg",
+    "precio": "100.500",
+    "id": "2"
+  },
+  {
+    "nombre": "Silla Gamer",
+    "descripcion": "Silla Gamer Redragon Gaia C211-BR Negro Rojo",
+    "marca": "Redragon",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/Silla-Gamer-Redragon-Gaia-C211-BR-Negro-Rojo_47453_1.jpeg",
+    "precio": "300.439",
+    "id": "3"
+  },
+  {
+    "nombre": "Gabinete",
+    "descripcion": "Gabinete Mid Tower Sentey R20 Rgb",
+    "marca": "Sentey",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/Gabinete-Mid-Tower-Sentey-R20-Rgb_47178_1.jpeg",
+    "precio": "42.999",
+    "id": "4"
+  },
+  {
+    "nombre": "Motherboard",
+    "descripcion": "Motherboard AM4 - Msi B550M PRO VDH",
+    "marca": "Msi",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/Motherboard-AM4-Msi-B550M-PRO-VDH_48396_1.jpeg",
+    "precio": "124.159",
+    "id": "5"
+  },
+  {
+    "nombre": "Teclado Gamer",
+    "descripcion": "Teclado Gamer Redragon K551 Mitra Rgb Negro Switch Red",
+    "marca": "Redragon",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/Teclado-Gamer-Redragon-K551-Mitra-Rgb-NegrO_45904_8.jpeg?v747",
+    "precio": "60.000",
+    "id": "6"
+  },
+  {
+    "nombre": "Fuente de Poder",
+    "descripcion": "Fuente Sentey MBP600-GS 600W 80 Plus Bronze",
+    "marca": "Sentey",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/Fuente-Sentey-MBP600-GS-600W-80-Plus-Bronze_49952_1.jpeg",
+    "precio": "70.999",
+    "id": "7"
+  },
+  {
+    "nombre": "Gabinete",
+    "descripcion": "Gabinete Mid Tower Xpg Valor Air White 4 Fan Vidrio Templado",
+    "marca": "Xpg",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/Gabinete-Mid-Tower-XPG-Valor-Air-White-4-Fan-Vidrio-Templado_47227_1.jpeg",
+    "precio": "67.499",
+    "id": "8"
+  }
+  ]
+}

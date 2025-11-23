@@ -1,0 +1,17 @@
+/* Instalar React Router */
+npm install react-router-dom
+
+/* Instalar Bootstrap */
+npm install bootstrap
+
+/* Instalar styled-components */
+npm install styled-components
+
+/* Instalar React Icons */
+npm install react-icons
+
+/* Instalar React Toastify */
+npm install react-toastify
+
+/* Instalar React Helmet */
+npm install react-helmet-async

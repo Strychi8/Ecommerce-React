@@ -44,6 +44,11 @@ function EliminarProducto() {
       setCargando(false);
     }
   };
+
+  const cancelarEdicion = () => {
+    // Navega al dashboard cuando el usuario cancela la acción de eliminación
+    navigate('/dashboard');
+  };
   
   // Mostrar modal personalizado en lugar de window.confirm
   const manejarEliminar = () => {
@@ -102,7 +107,7 @@ function EliminarProducto() {
         </button>
        
         <button
-          onClick={() => navigate('/productos')}
+          onClick={cancelarEdicion}
           disabled={cargando}
           style={{
             padding: '12px 24px',

@@ -3,7 +3,9 @@ import React from 'react'
 function Inicio() {
   return (
     <>  
-    <h1>Plataforma en desarrollo...</h1>
+    <div>
+      <h1 className='text-center my-4'>Strychi Tech</h1>
+    </div>
     </>
   )
 }

@@ -1,76 +1,209 @@
 import React from 'react';
 import { useAuthContext } from '../context/AuthContext';
+import { useProducts } from '../context/ProductsContext';
 import { Link, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { FaPlus } from 'react-icons/fa';
+
 
 export default function Dashboard() {
+  const { productos, cargando, error, refetchProductos } = useProducts();
   const { usuario } = useAuthContext();
   const navigate = useNavigate();
-
-  // Obtener el token actual
-  const tokenActual = localStorage.getItem('authToken');
+  
+  const tokenActual = localStorage.getItem('authToken'); // Obtener el token actual
 
   // Función para navegar al formulario de agregar producto
-  const manejarAgregarProducto = () => {
-    navigate('/formulario-producto');
+  const manejarAgregarProducto = () => navigate('/formulario-producto');
+
+  // Funcion para navegar al formulario de edición
+  const manejarEditar = (producto) => navigate('/formulario-producto', { state: { producto } });
+
+  // Navegar a la página de confirmación de eliminación
+  const manejarEliminar = async (producto) => navigate('/eliminar-producto', { state: { producto } });
+
+  const manejarRefresh = async () => {
+    try {
+      await refetchProductos();
+    } catch (err) {
+      console.error('Error al refrescar productos', err);
+    }
+  };
+
+  // Helper para formatear precio a formato argentino
+  const formatMoney = (value) => {
+    const num = Number(String(value).replace(/\./g, '').replace(',', '.')) || 0;
+    return new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(Math.round(num));
+  };
+
+  // Helper para formatear fecha en formato dd/mm/yy (ej. 25/11/25)
+  const formatDateShort = (iso) => {
+    if (!iso) return '-';
+    try {
+      const date = new Date(iso);
+      return new Intl.DateTimeFormat('es-AR', { day: '2-digit', month: '2-digit', year: '2-digit' }).format(date);
+    } catch {
+      return '-';
+    }
   };
 
   return (
-    <div style={{ padding: '20px', minHeight: '60vh' }}>
-      <h1>Panel de Administración</h1>
-      <div style={{ background: '#f5f5f5', padding: '20px', borderRadius: '8px' }}>
-        <p><strong>Sesión iniciada como: </strong> {usuario.nombre}</p>
-       
-        {/* TOKEN */}
-        <div style={{
-          background: '#e9ecef',
-          padding: '10px',
-          borderRadius: '4px',
-          margin: '10px 0',
-          fontSize: '14px',
-        }}>
-          <strong>Token de autenticación:</strong>
-          <br />
-          <code>{tokenActual}</code>
-        </div>
+    <div className="dashboard-bg">
+      <div className="container my-4">
+        <div className="row g-3 mb-3">
+          <div className="col-12 col-md-6">
+            <div className="card h-100">
+              <div className="card-body">
+                <h1 className="h5 mb-1 fw-bold">Panel de Administración</h1>
+                <p className="mb-0 text-muted">Bienvenido, <strong>{usuario?.name}</strong></p>
+              </div>
+            </div>
+          </div>
 
-        {/* SECCIÓN DE ACCIONES ADMIN */}
-        <div style={{ margin: '20px 0' }}>
-          <h3>Acciones:</h3>
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '10px' }}>
-            <button
-              onClick={manejarAgregarProducto}
-              style={{
-                padding: '10px 20px',
-                background: '#28a745',
-                color: 'white',
-                textDecoration: 'none',
-                borderRadius: '4px',
-                border: 'none',
-                cursor: 'pointer',
-                display: 'inline-block'
-              }}
-            >
-              Agregar Productos
-            </button>
-           
-            <Link
-              to="/productos"
-              style={{
-                padding: '10px 20px',
-                background: '#08354C',
-                color: 'white',
-                textDecoration: 'none',
-                borderRadius: '4px',
-                display: 'inline-block'
-              }}
-            >
-              Ver / Editar / Eliminar Productos
-            </Link>
+          <div className="col-12 col-md-6">
+            <div className="card h-100">
+                <div className="card-body">
+                  <strong>Token de autenticación:</strong>
+                  <div className="mt-2"><code className="token-code">{tokenActual}</code></div>
+                </div>
+              </div>
           </div>
         </div>
-        <hr></hr>
-       
+
+        <div className="card">
+          <div className="card-body">
+            <h2 className="card-title text-center my-3 fw-bold fs-4">Productos totales</h2>
+              <div className="d-flex gap-2 mb-3">
+                <BotonAgregar onClick={manejarAgregarProducto} aria-label="Agregar nuevo producto">
+                  <FaPlus size={16} />
+                  <span>Agregar Nuevo Producto</span>
+                </BotonAgregar>
+                <BotonRefrescar onClick={manejarRefresh} aria-label="Refrescar lista">Refrescar</BotonRefrescar>
+              </div>
+
+            {cargando && <p>Cargando productos...</p>}
+            {error && <p className="text-danger">{error}</p>}
+
+            {!cargando && !error && (
+              <div className="table-responsive mt-2">
+                <table className="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Imagen</th>
+                      <th>Nombre</th>
+                      <th>Marca</th>
+                      <th>Precio</th>
+                      <th>Creado el</th>
+                      <th>Modificado el</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {productos.map(producto => (
+                      <tr key={producto.id}>
+                        <td className="align-middle">{producto.id}</td>
+                        <td className="align-middle">
+                          {producto.avatar ? (
+                            <img src={producto.avatar} alt={producto.nombre} className="imagen-dashboard rounded" />
+                          ) : (
+                            <div className="sin-imagen-dashboard rounded d-flex align-items-center justify-content-center">Sin imagen</div>
+                          )}
+                        </td>
+                        <td>{producto.nombre}</td>
+                        <td>{producto.marca || producto.brand || '-'}</td>
+                        <td>{formatMoney(producto.precio)}</td>
+                        <td>{formatDateShort(producto.createdAt)}</td>
+                        <td>{formatDateShort(producto.modifiedAt)}</td>
+                        <td>
+                          <div className="d-flex gap-2">
+                            <VerDetalle to={`/productos/${producto.id}`} state={{producto}}>Ver</VerDetalle>
+                            <BotonEditar onClick={() => manejarEditar(producto)}>Editar</BotonEditar>
+                            <BotonEliminar onClick={() => manejarEliminar(producto)}>Eliminar</BotonEliminar>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
 }
+
+// Styled components para los botones del dashboard
+const VerDetalle = styled(Link)`
+  display: inline-block;
+  padding: .50rem .5rem;
+  font-size: .875rem;
+  font-weight: 600;
+  color: #0b8793;
+  border: 1px solid #0b8793;
+  border-radius: .25rem;
+  text-decoration: none;
+  background: transparent;
+  line-height: 1;
+  &:hover { background: #0b8793; color: #fff; text-decoration: none; }
+`;
+
+const BotonEditar = styled.button`
+  padding: .40rem .5rem;
+  font-size: .875rem;
+  font-weight: 600;
+  background: #1c3152ff;
+  color: #fff;
+  border: none;
+  border-radius: .25rem;
+  cursor: pointer;
+  line-height: 1;
+  &:hover { background: #2c4f85ff; }
+`;
+
+const BotonEliminar = styled.button`
+  padding: .40rem .5rem;
+  font-size: .875rem;
+  font-weight: 600;
+  background: #d41d20ff;
+  color: #fff;
+  border: none;
+  border-radius: .25rem;
+  cursor: pointer;
+  line-height: 1;
+  &:hover { background: #ec2d2def; }
+`;
+
+const BotonAgregar = styled.button`
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .70rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background: #198754;
+  color: #fff;
+  border: none;
+  border-radius: .375rem;
+  cursor: pointer;
+  line-height: 1;
+  svg { display: block; }
+  &:hover { background: #157347; }
+`;
+
+const BotonRefrescar = styled.button`
+  display: inline-flex;
+  align-items: center;
+  padding: .70rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background: transparent;
+  color: #0b8793;
+  border: 1px solid #0b8793;
+  border-radius: .375rem;
+  cursor: pointer;
+  line-height: 1;
+  &:hover { background: #0b8793; color: #fff; }
+`;

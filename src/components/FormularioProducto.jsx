@@ -94,7 +94,7 @@ function FormularioProducto() {
         });
 
         setTimeout(() => {
-          navigate('/productos');
+          navigate('/dashboard');
         }, 100);
 
       } else {
@@ -103,7 +103,7 @@ function FormularioProducto() {
         toast.success('Producto actualizado correctamente');
 
         setTimeout(() => {
-          navigate('/productos');
+          navigate('/dashboard');
         }, 100);
       }
      
@@ -118,9 +118,8 @@ function FormularioProducto() {
   };
 
   const cancelarEdicion = () => {
-    if (modo === "editar") {
-      navigate('/productos');
-    }
+    // Navega al dashboard cuando el usuario cancela la edición o creación
+    navigate('/dashboard');
   };
 
   // Renderizado del componente
@@ -279,23 +278,21 @@ function FormularioProducto() {
           }
         </button>
        
-        {modo === "editar" && (
-          <button
-            type="button"
-            onClick={cancelarEdicion}
-            style={{
-              flex: 1,
-              padding: '12px',
-              backgroundColor: '#6c757d',
-              color: 'white',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer'
-            }}
-          >
-            Cancelar
-          </button>
-        )}
+        <button
+          type="button"
+          onClick={cancelarEdicion}
+          style={{
+            flex: 1,
+            padding: '12px',
+            backgroundColor: '#6c757d',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        >
+          Cancelar
+        </button>
       </div>
      
       <p>(*) Campos obligatorios</p>

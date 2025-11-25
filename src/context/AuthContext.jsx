@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 // Crear el contexto de autenticación
 // eslint-disable-next-line react-refresh/only-export-components
@@ -6,22 +6,20 @@ export const AuthContext = createContext();
 
 // Proveedor de autenticación
 export function AuthProvider({ children }) {
-  const [usuario, setUsuario] = useState(null);
-
-  // Verificar token al cargar la aplicación
-  useEffect(() => {
+  // Inicializar el usuario a partir de localStorage de forma sincrónica
+  // para evitar redirecciones tempranas por guards que lean isAuthenticated
+  const [usuario, setUsuario] = useState(() => {
     const token = localStorage.getItem("authToken");
-    const emailGuardado = localStorage.getItem("authEmail");
-    const passwordGuardado = localStorage.getItem("authPassword");
-    if (token) {
-      const username = token.replace("fake-token-", "");
-      setUsuario({
-        name: username,
-        password: passwordGuardado || "",
-        email: emailGuardado || "",
-      });
-    }
-  }, []);
+    if (!token) return null;
+    const username = token.replace("fake-token-", "");
+    const emailGuardado = localStorage.getItem("authEmail") || "";
+    const passwordGuardado = localStorage.getItem("authPassword") || "";
+    return {
+      name: username,
+      password: passwordGuardado,
+      email: emailGuardado,
+    };
+  });
 
   // Función para iniciar sesión
   // Ahora acepta opcionalmente la contraseña y la guarda en localStorage

@@ -55,28 +55,37 @@ export const ProductsProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const cargarProductos = async () => {
-      try {
-        const respuesta = await fetch('https://68e41ae78e116898997b02d9.mockapi.io/api/v1/productos');
-        if (!respuesta.ok) throw new Error('Error al cargar productos');
-        const datos = await respuesta.json();
-        setProductos(datos);
-      } catch (error) {
-        console.error('Error al cargar productos:', error);
-        setError("Hubo un problema al cargar los productos.");
-      } finally {
-        setCargando(false);
-      }
-    };
+    // cargarProductos se define fuera para poder reutilizarlo (refetch)
     cargarProductos();
   }, []);
 
+  // Definir la función de carga pública para poder reusar (refresh) desde componentes
+  async function cargarProductos() {
+    setCargando(true);
+    try {
+      const respuesta = await fetch('https://68e41ae78e116898997b02d9.mockapi.io/api/v1/productos');
+      if (!respuesta.ok) throw new Error('Error al cargar productos');
+      const datos = await respuesta.json();
+      setProductos(datos);
+      setError(null);
+      return datos;
+    } catch (error) {
+      console.error('Error al cargar productos:', error);
+      setError("Hubo un problema al cargar los productos.");
+      throw error;
+    } finally {
+      setCargando(false);
+    }
+  }
+
   const agregarProducto = async (nuevoProducto) => {
     try {
+      // Asegurar createdAt si no lo proporciona el formulario
+      const payload = { ...nuevoProducto, createdAt: nuevoProducto.createdAt || new Date().toISOString() };
       const respuesta = await fetch('https://68e41ae78e116898997b02d9.mockapi.io/api/v1/productos', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(nuevoProducto),
+        body: JSON.stringify(payload),
       });
 
       if (!respuesta.ok) throw new Error('Error al agregar el producto');
@@ -92,10 +101,12 @@ export const ProductsProvider = ({ children }) => {
 
   const editarProducto = async (productoActualizado) => {
     try {
+      // asegurarse de registrar la fecha de modificación
+      const payload = { ...productoActualizado, modifiedAt: new Date().toISOString() };
       const respuesta = await fetch(`https://68e41ae78e116898997b02d9.mockapi.io/api/v1/productos/${productoActualizado.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(productoActualizado),
+        body: JSON.stringify(payload),
       });
 
       if (!respuesta.ok) throw new Error('Error al editar el producto');
@@ -122,7 +133,9 @@ export const ProductsProvider = ({ children }) => {
         agregarProducto,
         editarProducto,
         validarProducto,
-        validar
+        validar,
+        // Exponer la función para recargar productos sin recargar la página
+        refetchProductos: cargarProductos
       }}>
       {children}
     </ProductsContext.Provider>

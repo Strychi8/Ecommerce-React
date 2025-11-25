@@ -1,10 +1,11 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from 'styled-components';
 
 const ProductoDetalle = () => {
  
     //const { id } = useParams();
     const location = useLocation();
+    const navigate = useNavigate();
     const producto = location.state?.producto;
  
  // if (!producto) {
@@ -67,7 +68,7 @@ const ProductoDetalle = () => {
             </div>
          </div>
 
-        <Link to={`/productos`}><BotonEstilizado>Volver a Productos</BotonEstilizado></Link>
+        <BotonEstilizado onClick={() => window.history.length > 1 ? navigate(-1) : navigate('/productos')}>Volver</BotonEstilizado>
 
       </div>
     </div>

@@ -1,90 +1,137 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 import { useCartContext } from "../context/CartContext";
+import styled from 'styled-components';
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Pagar() {
-  const { usuario, cerrarSesion } = useAuthContext();
-  const { carrito, total, vaciarCarrito } = useCartContext();
+  const { usuario } = useAuthContext();
+  const { carrito, total, vaciarCarrito, agregarCantidad, quitarCantidad } = useCartContext();
   const navigate = useNavigate();
-
-  const tokenActual = localStorage.getItem('authToken');
 
   // Función para finalizar compra
   const comprar = () => {
     toast.success("¡Compra realizada con éxito!");
-    vaciarCarrito(); // Limpiar carrito después de comprar
+    vaciarCarrito();
     navigate("/productos");
   };
 
   return (
-    <div>
-      {/* Info del usuario */}
-      <div>
-        <h2>Hola {usuario.nombre}</h2>
-        <p>Email: {usuario.email}</p>
-       
-        {/* Estilo para el Token */}
-        <div style={{
-          background: '#f0f0f0',
-          padding: '8px',
-          borderRadius: '4px',
-          margin: '10px 0',
-          fontSize: '12px',
-          wordBreak: 'break-all'
-        }}>
-          <strong>Token:</strong> {tokenActual}
+    <div className="container my-5">
+      <div className="row mb-3">
+        <div className="col-12">
+          <h2 className="h4">Resumen de la compra</h2>
+          <p className="mb-0">Usuario: <strong>{usuario?.name}</strong></p>
+          <p>Email: <strong>{usuario?.email}</strong></p>
+          <hr />
         </div>
-        <button onClick={cerrarSesion}>Cerrar sesión</button>
-        <hr />
       </div>
 
-      {/* Carrito */}
-      <div className="p-5">
-        <h2 className="mb-4">Tu compra:</h2>
+      <div className="row">
+        <div className="col-lg-8">
+          <div className="card mb-4">
+            <div className="card-body">
+              <h5 className="card-title">Tu carrito</h5>
 
-        {carrito.length > 0 ? (
-          <>
-            {carrito.map((producto) => {
-              const cantidad = Number(producto.cantidad || 1);
-              const precioUnitario = Number(producto.precio || 0);
-              const subtotal = cantidad * precioUnitario;
-              return (
-                <div key={producto.id} style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-                  <img src={producto.avatar} alt={producto.nombre} width="60" />
-                  <div>
-                    <div className="fs-5 fw-bold text-warning">{producto.nombre}</div>
-                    <div>Precio unidad: ${Number(precioUnitario).toFixed(3)}</div>
-                    <div className="border-bottom mb-1">Cantidad: {cantidad}</div>
-                    <div className="fw-bold">Subtotal: ${Number(subtotal).toFixed(3)}</div>
+              {carrito.length === 0 && (
+                <p className="text-muted">No hay productos en el carrito.</p>
+              )}
+
+              {carrito.map((producto) => {
+                const cantidad = Number(producto.cantidad || 1);
+                const precioUnitario = Number(producto.precio || 0);
+                const subtotal = cantidad * precioUnitario;
+                return (
+                  <div key={producto.id} className="d-flex align-items-center mb-3">
+                    {producto.avatar ? (
+                      <img src={producto.avatar} alt={producto.nombre} className="rounded me-3" style={{ width: 90, height: 70, objectFit: 'cover' }} />
+                    ) : (
+                      <div className="bg-light rounded me-3 d-flex align-items-center justify-content-center" style={{ width: 90, height: 70 }}>
+                        <small className="text-muted">Sin imagen</small>
+                      </div>
+                    )}
+
+                    <div className="flex-grow-1">
+                      <div className="d-flex justify-content-between align-items-start">
+                        <div>
+                          <h6 className="mb-1">{producto.nombre}</h6>
+                              <div className="text-muted small">Precio unidad: ${precioUnitario.toFixed(3)}</div>
+                        </div>
+                            <div className="text-end">
+                              <div className="d-flex align-items-center justify-content-end gap-2">
+                                <BotonCantidad
+                                  aria-label={`Quitar una unidad de ${producto.nombre}`}
+                                  onClick={() => quitarCantidad(producto.id)}
+                                  disabled={cantidad <= 1}
+                                >
+                                  -
+                                </BotonCantidad>
+                                <div className="small px-2">{cantidad}</div>
+                                <BotonCantidad
+                                  aria-label={`Agregar una unidad de ${producto.nombre}`}
+                                  onClick={() => agregarCantidad(producto.id)}
+                                >
+                                  +
+                                </BotonCantidad>
+                              </div>
+                              <div className="fw-bold mt-2">Subtotal: ${subtotal.toFixed(3)}</div>
+                            </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-            <h3 className="fs-4 fw-bold p-3 text-dark bg-light rounded-4 shadow-md">Total a pagar: ${Number(total).toFixed(3)}</h3>
-          </>
+                );
+              })}
+            </div>
+          </div>
+        </div>
 
-        ) : (
-          <p>No hay productos en el carrito</p>
-        )}
-      </div>
+        <div className="col-lg-4">
+          <div className="card shadow-sm">
+            <div className="card-body">
+              <h5 className="card-title">Total a pagar</h5>
+              <p className="display-6 fw-bold mb-3">${Number(total).toFixed(3)}</p>
 
-      <div>
-        <button onClick={vaciarCarrito}>
-          Vaciar Carrito
-        </button>
-      </div>
-      
-      <div>
-        {carrito.length > 0 && (
-          <button onClick={comprar}>Confirmar y Pagar</button>
-        )}
-        <button onClick={() => navigate("/productos")}>
-          {carrito.length > 0 ? "Seguir Comprando" : "Volver a Productos"}
-        </button>
+              <div className="d-grid gap-2">
+                <button className="btn btn-success" onClick={comprar} disabled={carrito.length === 0}>
+                  Confirmar y Pagar
+                </button>
+                <button className="btn btn-danger" onClick={vaciarCarrito} disabled={carrito.length === 0}>
+                  Vaciar carrito
+                </button>
+                <button className="btn btn-warning" onClick={() => navigate('/productos')}>
+                  {carrito.length > 0 ? "Seguir Comprando" : "Volver a Productos"}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
+
+const BotonCantidad = styled.button`
+  background-color: #121C2B;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1;
+
+  &:hover {
+    background-color: #192e46ff;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+`;

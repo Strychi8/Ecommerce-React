@@ -71,7 +71,7 @@ function Navbar() {
                   <Bienvenida>Hola, {usuario.name}</Bienvenida>
                  
                   {usuario.name === "admin" && (
-                    <NavLinkAdmin to="/dashboard" className="nav-link">Modo Admin</NavLinkAdmin>
+                    <NavLinkAdmin to="/dashboard" className="nav-link">Dashboard</NavLinkAdmin>
                   )}
                  
                   <BotonCerrarSesion onClick={manejarCerrarSesion} className="btn btn-sm">
@@ -165,6 +165,7 @@ const NavLink = styled(Link)`
   color: #F2F0EC !important;
   text-decoration: none;
   padding: 0.5rem 1rem;
+  font-weight: 600;
  
   &:hover {
     color: #B5C7EB !important;
@@ -202,6 +203,7 @@ const Bienvenida = styled.span`
 
 const BotonCerrarSesion = styled.button`
   background: transparent;
+  font-weight: 600;
   color: #DC3545;
   border: 1px solid #DC3545;
   border-radius: 4px;
@@ -255,6 +257,7 @@ const IconoCarrito = styled(Link)`
   align-items: center;
   position: relative;
   font-size: 1rem;
+  font-weight: 600;
   gap: 5px;
  
   &:hover {

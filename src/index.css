@@ -80,6 +80,36 @@ footer {
   color: #c9d1d9;
 }
 
+/* Dashboard */
+.dashboard-bg {
+  background-color: #e7e6e1; 
+  min-height: 100vh;
+  padding: 1.5rem 0;
+}
+
+.token-code {
+  word-break: break-all;
+  font-weight: 600;
+}
+
+.imagen-dashboard {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  display: block;
+}
+
+.sin-imagen-dashboard {
+  width: 80px;
+  height: 60px;
+  background: #f1f1f1;
+  color: #666;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Linea Gradiente */
 .gradient-line {
   height: 4px;

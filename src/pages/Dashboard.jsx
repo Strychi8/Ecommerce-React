@@ -4,6 +4,7 @@ import { useProducts } from '../context/ProductsContext';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { FaPlus } from 'react-icons/fa';
+import { formatMoney, formatDateShort } from '../utils/formatters';
 
 
 export default function Dashboard() {
@@ -27,23 +28,6 @@ export default function Dashboard() {
       await refetchProductos();
     } catch (err) {
       console.error('Error al refrescar productos', err);
-    }
-  };
-
-  // Helper para formatear precio a formato argentino
-  const formatMoney = (value) => {
-    const num = Number(String(value).replace(/\./g, '').replace(',', '.')) || 0;
-    return new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(Math.round(num));
-  };
-
-  // Helper para formatear fecha en formato dd/mm/yy (ej. 25/11/25)
-  const formatDateShort = (iso) => {
-    if (!iso) return '-';
-    try {
-      const date = new Date(iso);
-      return new Intl.DateTimeFormat('es-AR', { day: '2-digit', month: '2-digit', year: '2-digit' }).format(date);
-    } catch {
-      return '-';
     }
   };
 

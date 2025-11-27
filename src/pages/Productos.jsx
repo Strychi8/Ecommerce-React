@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useCartContext } from "../context/CartContext";
 import { useProducts } from "../context/ProductsContext";
+import { formatMoney } from '../utils/formatters';
+
 
 export default function Productos() {
   const { productos, cargando, error } = useProducts();
@@ -39,7 +41,7 @@ const ProductoItem = ({ producto, onAgregarCarrito }) => (
         Sin imagen
       </div>
     )}
-    <p><strong>${producto.precio}</strong></p>
+    <p><strong>{formatMoney(producto.precio)}</strong></p>
    
     <Link to={`/productos/${producto.id}`} state={{producto}}>
       <button>Ver más</button>

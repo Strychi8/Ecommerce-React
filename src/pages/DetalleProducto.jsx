@@ -1,5 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from 'styled-components';
+import { formatMoney } from '../utils/formatters';
+
 
 const ProductoDetalle = () => {
  
@@ -60,7 +62,7 @@ const ProductoDetalle = () => {
                 
                 <div className="mb-3">
                   <strong>Precio:</strong>
-                  <h5 className="text-success d-inline ms-1">${Number(producto.precio).toFixed(3)}</h5>
+                  <h5 className="text-success d-inline ms-1">{formatMoney(producto?.precio)}</h5>
                 </div>
 
                        

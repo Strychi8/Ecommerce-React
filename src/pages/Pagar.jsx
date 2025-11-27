@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 import { useCartContext } from "../context/CartContext";
 import styled from 'styled-components';
-
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { formatMoney, parsePrice } from '../utils/formatters';
+
 
 export default function Pagar() {
   const { usuario } = useAuthContext();
@@ -42,7 +43,7 @@ export default function Pagar() {
 
               {carrito.map((producto) => {
                 const cantidad = Number(producto.cantidad || 1);
-                const precioUnitario = Number(producto.precio || 0);
+                const precioUnitario = parsePrice(producto.precio);
                 const subtotal = cantidad * precioUnitario;
                 return (
                   <div key={producto.id} className="d-flex align-items-center mb-3">
@@ -58,7 +59,7 @@ export default function Pagar() {
                       <div className="d-flex justify-content-between align-items-start">
                         <div>
                           <h6 className="mb-1">{producto.nombre}</h6>
-                              <div className="text-muted small">Precio unidad: ${precioUnitario.toFixed(3)}</div>
+                              <div className="text-muted small">Precio unidad: {formatMoney(precioUnitario)}</div>
                         </div>
                             <div className="text-end">
                               <div className="d-flex align-items-center justify-content-end gap-2">
@@ -77,7 +78,7 @@ export default function Pagar() {
                                   +
                                 </BotonCantidad>
                               </div>
-                              <div className="fw-bold mt-2">Subtotal: ${subtotal.toFixed(3)}</div>
+                              <div className="fw-bold mt-2">Subtotal: {formatMoney(subtotal)}</div>
                             </div>
                       </div>
                     </div>
@@ -92,7 +93,7 @@ export default function Pagar() {
           <div className="card shadow-sm">
             <div className="card-body">
               <h5 className="card-title">Total a pagar</h5>
-              <p className="display-6 fw-bold mb-3">${Number(total).toFixed(3)}</p>
+              <p className="display-6 fw-bold mb-3">{formatMoney(total)}</p>
 
               <div className="d-grid gap-2">
                 <button className="btn btn-success" onClick={comprar} disabled={carrito.length === 0}>

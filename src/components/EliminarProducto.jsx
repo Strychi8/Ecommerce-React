@@ -5,6 +5,7 @@ import ConfirmModal from './ConfirmModal';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
 function EliminarProducto() {
   const location = useLocation();
   const navigate = useNavigate();

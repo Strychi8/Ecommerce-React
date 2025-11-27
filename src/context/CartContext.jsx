@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { parsePrice } from '../utils/formatters';
 
 // Crear el contexto
 // eslint-disable-next-line react-refresh/only-export-components
@@ -67,9 +68,11 @@ const agregarAlCarrito = (producto) => {
     setCarrito(nuevoCarrito);
   };
 
+  // Calcular total usando parsePrice para interpretar correctamente formatos como "67.499"
   const total = carrito.reduce((sum, item) => {
     const cantidad = item.cantidad || 1;
-    return sum + (Number(item.precio) * cantidad);
+    const precioNum = parsePrice(item.precio);
+    return sum + (precioNum * cantidad);
   }, 0);
  
   // Valor que se provee a todos los componentes

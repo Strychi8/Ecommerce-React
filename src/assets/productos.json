@@ -6,6 +6,8 @@
     "marca": "Razer",
     "avatar": "https://mexx-img-2019.s3.amazonaws.com/Auricular-Gamer-Razer-Barracuda-X-Chroma-Negro_49741_1.jpeg",
     "precio": "220.000",
+    "createdAt": "2025-11-27T22:52:26.570Z",
+    "modifiedAt": "2025-11-27T22:52:31.395Z",
     "id": "1"
   },
   {
@@ -14,6 +16,8 @@
     "marca": "Logitech",
     "avatar": "https://mexx-img-2019.s3.amazonaws.com/Mouse-Gamer-Logitech-G-Pro-X-Superlight-Negro_40418_1.jpeg",
     "precio": "100.500",
+    "createdAt": "2025-11-27T22:52:26.570Z",
+    "modifiedAt": "2025-11-27T22:52:31.395Z",
     "id": "2"
   },
   {
@@ -22,6 +26,8 @@
     "marca": "Redragon",
     "avatar": "https://mexx-img-2019.s3.amazonaws.com/Silla-Gamer-Redragon-Gaia-C211-BR-Negro-Rojo_47453_1.jpeg",
     "precio": "300.439",
+    "createdAt": "2025-11-27T22:52:26.570Z",
+    "modifiedAt": "2025-11-27T22:52:31.395Z",
     "id": "3"
   },
   {
@@ -30,6 +36,8 @@
     "marca": "Sentey",
     "avatar": "https://mexx-img-2019.s3.amazonaws.com/Gabinete-Mid-Tower-Sentey-R20-Rgb_47178_1.jpeg",
     "precio": "42.999",
+    "createdAt": "2025-11-27T22:52:26.570Z",
+    "modifiedAt": "2025-11-27T22:52:31.395Z",
     "id": "4"
   },
   {
@@ -38,6 +46,8 @@
     "marca": "Msi",
     "avatar": "https://mexx-img-2019.s3.amazonaws.com/Motherboard-AM4-Msi-B550M-PRO-VDH_48396_1.jpeg",
     "precio": "124.159",
+    "createdAt": "2025-11-27T22:52:26.570Z",
+    "modifiedAt": "2025-11-27T22:52:31.395Z",
     "id": "5"
   },
   {
@@ -46,6 +56,8 @@
     "marca": "Redragon",
     "avatar": "https://mexx-img-2019.s3.amazonaws.com/Teclado-Gamer-Redragon-K551-Mitra-Rgb-NegrO_45904_8.jpeg?v747",
     "precio": "60.000",
+    "createdAt": "2025-11-27T22:52:26.570Z",
+    "modifiedAt": "2025-11-27T22:52:31.395Z",
     "id": "6"
   },
   {
@@ -54,6 +66,8 @@
     "marca": "Sentey",
     "avatar": "https://mexx-img-2019.s3.amazonaws.com/Fuente-Sentey-MBP600-GS-600W-80-Plus-Bronze_49952_1.jpeg",
     "precio": "70.999",
+    "createdAt": "2025-11-27T22:52:26.570Z",
+    "modifiedAt": "2025-11-27T22:52:31.395Z",
     "id": "7"
   },
   {
@@ -62,6 +76,8 @@
     "marca": "Xpg",
     "avatar": "https://mexx-img-2019.s3.amazonaws.com/Gabinete-Mid-Tower-XPG-Valor-Air-White-4-Fan-Vidrio-Templado_47227_1.jpeg",
     "precio": "67.499",
+    "createdAt": "2025-11-27T22:52:26.570Z",
+    "modifiedAt": "2025-11-27T22:52:31.395Z",
     "id": "8"
   }
   ]

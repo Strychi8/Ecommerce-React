@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useProducts } from '../context/ProductsContext';
 import ConfirmModal from './ConfirmModal';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,6 +12,7 @@ function EliminarProducto() {
  
   const [cargando, setCargando] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const { refetchProductos } = useProducts();
 
   // Función para eliminar producto
   const eliminarProducto = async () => {
@@ -18,24 +20,28 @@ function EliminarProducto() {
    
     setCargando(true);
     try {
-      const respuesta = await
-      fetch(`https://68d482e3214be68f8c696ae2.mockapi.io/api/productos/${producto.id}`, {
+      // Usar la misma base que ProductsContext
+      const respuesta = await fetch(`https://68e41ae78e116898997b02d9.mockapi.io/api/v1/productos/${producto.id}`, {
         method: 'DELETE',
       });
-     
+
       if (!respuesta.ok) {
         throw new Error('Error al eliminar el producto.');
       }
 
       toast.success('Producto eliminado correctamente.');
-      
-      // Cerrar modal (si estaba abierto) y navegar de vuelta
-      setShowModal(false);
 
-      navigate('/productos');
-      setTimeout(() => {
-        window.location.reload();
-      }, 100);
+      // Cerrar modal (si estaba abierto) y refrescar lista global
+      setShowModal(false);
+      try {
+        await refetchProductos();
+      } catch (e) {
+        // si falla el refetch, loguear pero seguir adelante
+        console.error('No se pudo refrescar la lista tras eliminar:', e);
+      }
+
+      // Volver al dashboard (o a la lista de productos)
+      navigate('/dashboard');
      
     } catch (error) {
       console.error(error.message);

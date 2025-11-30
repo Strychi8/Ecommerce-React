@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,6 +12,23 @@ export const CartContext = createContext();
 export function CartProvider({ children }) {
   // Estado del carrito
   const [carrito, setCarrito] = useState([]);
+  const [cargaCompleta, setCargaCompleta] = useState(false); // Flag o bandera
+
+  // Cargar el carrito desde localStorage al iniciar la aplicación
+  useEffect(() => {
+    const carritoGuardado = localStorage.getItem("carrito");
+    if (carritoGuardado) {
+      setCarrito(JSON.parse(carritoGuardado)); // Lo parseamos de string a array de objetos
+    }
+    setCargaCompleta(true); // Marca que la carga inicial ha terminado
+  }, []);
+
+  // Guardar el carrito en localStorage cada vez que cambie
+  useEffect(() => {
+    if (cargaCompleta) { // Solo guarda si la carga inicial ya se completó
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+    }
+  }, [carrito, cargaCompleta]);
 
   // Funciones para el carrito
 const agregarAlCarrito = (producto) => {

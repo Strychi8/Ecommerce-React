@@ -29,13 +29,10 @@ function App() {
             <Navbar />
             {/* ToastContainer global para notificaciones */}
             <ToastContainer
-              position="top-right"
+              position="bottom-center"
               autoClose={3000}
               hideProgressBar={false}
-              newestOnTop={true}
               closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
               draggable
               pauseOnHover
               theme="dark"

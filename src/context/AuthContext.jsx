@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 // Crear el contexto de autenticación
 // eslint-disable-next-line react-refresh/only-export-components
@@ -6,36 +6,39 @@ export const AuthContext = createContext();
 
 // Proveedor de autenticación
 export function AuthProvider({ children }) {
-  // Inicializar el usuario a partir de localStorage de forma sincrónica
-  // para evitar redirecciones tempranas por guards que lean isAuthenticated
-  const [usuario, setUsuario] = useState(() => {
+  const [usuario, setUsuario] = useState(null);
+  const [cargando, setCargando] = useState(true);
+
+  // Verificar token al cargar la aplicación
+  useEffect(() => {
     const token = localStorage.getItem("authToken");
-    if (!token) return null;
-    const username = token.replace("fake-token-", "");
-    const emailGuardado = localStorage.getItem("authEmail") || "";
-    const passwordGuardado = localStorage.getItem("authPassword") || "";
-    return {
-      name: username,
-      password: passwordGuardado,
-      email: emailGuardado,
-    };
-  });
+    const emailGuardado = localStorage.getItem("authEmail");
+    const passwordGuardado = localStorage.getItem("authPassword");
+    if (token) {
+      const username = token.replace("fake-token-", "");
+      setUsuario({
+        name: username,
+        password: passwordGuardado || "",
+        email: emailGuardado || "",
+      });
+    }
+
+    setCargando(false);
+  }, []);
 
   // Función para iniciar sesión
   // Ahora acepta opcionalmente la contraseña y la guarda en localStorage
-  const iniciarSesion = (username, password) => {
+  const iniciarSesion = (username, passwordIngresado, emailIngresado) => {
+
     const token = `fake-token-${username}`;
     localStorage.setItem("authToken", token);
-    if (password !== undefined) {
-      localStorage.setItem("authPassword", password);
-    }
-
-    const emailGuardado = localStorage.getItem("authEmail");
-    const passwordGuardado = localStorage.getItem("authPassword");
+    localStorage.setItem("authPassword", passwordIngresado);
+    localStorage.setItem("authEmail", emailIngresado);
+    
     setUsuario({
       name: username,
-      password: passwordGuardado || "",
-      email: emailGuardado || "",
+      password: passwordIngresado || "",
+      email: emailIngresado || "",
     });
   };
 
@@ -55,6 +58,7 @@ export function AuthProvider({ children }) {
     // Determina si el usuario es administrador. Se marca admin cuando
     // el password es "admin" y el email coincide con las credenciales de prueba.
     esAdmin: usuario?.name === "admin" && usuario?.password === "admin" && usuario?.email === "1234@admin",
+    cargando,
   };
 
   return (

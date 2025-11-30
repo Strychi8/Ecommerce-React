@@ -23,7 +23,7 @@ export default function IniciarSesion() {
       // Guarda el email y la contraseña ingresada y pasa ambos a iniciarSesion
       localStorage.setItem("authEmail", formulario.email);
       localStorage.setItem("authPassword", formulario.password);
-      iniciarSesion("admin", formulario.password);
+      iniciarSesion("admin", formulario.password, formulario.email);
       navigate("/dashboard");
     // Lógica para usuarios normales - si NO es admin
     } else if (
@@ -36,7 +36,7 @@ export default function IniciarSesion() {
     // Guarda el email y la contraseña ingresada y pasa ambos a iniciarSesion
     localStorage.setItem("authEmail", formulario.email);
     localStorage.setItem("authPassword", formulario.password);
-    iniciarSesion(formulario.name, formulario.password);
+    iniciarSesion(formulario.name, formulario.password, formulario.email);
 
       // Si venía del carrito, redirige a pagar
       if (ubicacion.state?.carrito) {

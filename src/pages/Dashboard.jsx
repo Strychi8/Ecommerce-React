@@ -131,6 +131,7 @@ const VerDetalle = styled(Link)`
   text-decoration: none;
   background: transparent;
   line-height: 1;
+  transition: background 0.3s, color 0.3s;
   &:hover { background: #0b8793; color: #fff; text-decoration: none; }
 `;
 
@@ -144,6 +145,7 @@ const BotonEditar = styled.button`
   border-radius: .25rem;
   cursor: pointer;
   line-height: 1;
+  transition: background 0.3s;
   &:hover { background: #2c4f85ff; }
 `;
 
@@ -157,6 +159,7 @@ const BotonEliminar = styled.button`
   border-radius: .25rem;
   cursor: pointer;
   line-height: 1;
+  transition: background 0.3s;
   &:hover { background: #ec2d2def; }
 `;
 
@@ -173,6 +176,7 @@ const BotonAgregar = styled.button`
   border-radius: .375rem;
   cursor: pointer;
   line-height: 1;
+  transition: background 0.3s;
   svg { display: block; }
   &:hover { background: #157347; }
 `;
@@ -189,5 +193,6 @@ const BotonRefrescar = styled.button`
   border-radius: .375rem;
   cursor: pointer;
   line-height: 1;
+  transition: background 0.3s ,color 0.3s;
   &:hover { background: #0b8793; color: #fff; }
 `;

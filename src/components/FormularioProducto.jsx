@@ -211,15 +211,25 @@ const BotonGuardar = styled.button`
   padding: 0.55rem 1rem;
   font-weight: 600;
   box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  transition: background 0.2s;
+
+  &:hover {
+    background: linear-gradient(180deg,#27a03f,#19692c);
+  }
 `;
 
 const BotonCancelar = styled.button`
   flex: 1;
-  background: #8396A9;
+  background: #8597c5ff;
   color: white;
   border: none;
   border-radius: 10px;
   padding: 0.55rem 1rem;
   font-weight: 600;
   box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  transition: background 0.2s;
+
+  &:hover {
+    background: #6d88ceff;
+  }
 `;

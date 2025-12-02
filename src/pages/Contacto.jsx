@@ -49,4 +49,9 @@ const BotonEnviar = styled.button`
   padding: 0.55rem 1rem;
   font-weight: 600;
   box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  transition: background 0.3s;
+
+  &:hover {
+    background: linear-gradient(180deg,#27a03f,#19692c);
+  }
 `;

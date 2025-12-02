@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useProducts } from '../context/ProductsContext';
 import ConfirmModal from './ConfirmModal';
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import styled from 'styled-components';
+import { formatMoney } from '../utils/formatters';
 
 
 function EliminarProducto() {
@@ -63,89 +65,92 @@ function EliminarProducto() {
   };
 
   return (
-    <div style={{ maxWidth: '500px', margin: '40px auto', padding: '20px', textAlign: 'center' }}>
-      <h2 style={{ color: '#dc3545', marginBottom: '20px' }}>Eliminar Producto</h2>
-     
-      <div style={{
-        border: '1px solid #ddd',
-        borderRadius: '8px',
-        padding: '20px',
-        marginBottom: '30px',
-        backgroundColor: '#f8f9fa'
-      }}>
-        <h3 style={{ color: '#dc3545' }}>¿Estás seguro de que deseas eliminar este producto?</h3>
-       
-        <div style={{ textAlign: 'left', margin: '20px 0' }}>
-          <p><strong>Nombre:</strong> {producto.nombre}</p>
-          <p><strong>Precio:</strong> ${producto.precio}</p>
-          <p><strong>Marca:</strong> {producto.marca || 'Sin marca'}</p>
-          <p><strong>Descripción:</strong> {producto.descripcion}</p>
-          {producto.avatar && (
-            <img
-              src={producto.avatar}
-              alt="Producto a eliminar"
-              style={{ maxWidth: '200px', marginTop: '10px' }}
-            />
-          )}
+    <div className="login-bg d-flex align-items-center justify-content-center">
+      <div className="login-card shadow-sm" style={{ maxWidth: 720, width: '100%' }}>
+        <div className="card border-danger">
+          <div className="card-header bg-danger text-white">
+            <h5 className="mb-0">Eliminar Producto</h5>
+          </div>
+          <div className="card-body">
+            <p className="text-danger h6">¿Estás seguro de que deseas eliminar este producto?</p>
+
+            <ul className="list-group mb-3">
+              <li className="list-group-item border-danger"><strong>Nombre:</strong> {producto.nombre}</li>
+              <li className="list-group-item border-danger"><strong>Precio:</strong> {formatMoney(producto.precio)}</li>
+              <li className="list-group-item border-danger"><strong>Marca:</strong> {producto.marca || 'Sin marca'}</li>
+              <li className="list-group-item border-danger"><strong>Descripción:</strong> {producto.descripcion}</li>
+            </ul>
+
+            {producto.avatar && (
+              <img src={producto.avatar} alt="Producto a eliminar" className="img-fluid mb-3 mx-auto d-block" style={{ maxWidth: 200 }} />
+            )}
+
+            <div className="d-flex justify-content-center gap-3 mt-4">
+              <BotonEliminar
+                onClick={manejarEliminar}
+                disabled={cargando}
+              >
+                {cargando ? 'Eliminando...' : 'Sí, eliminar'}
+              </BotonEliminar>
+
+              <BotonCancelar
+                onClick={cancelarEdicion}
+                disabled={cargando}
+              >
+                Cancelar
+              </BotonCancelar>
+            </div>
+          </div>
         </div>
 
-
-        <p style={{ color: '#666', fontStyle: 'italic' }}>
-          Esta acción no se puede deshacer. El producto será eliminado permanentemente.
-        </p>
+        <ConfirmModal
+          show={showModal}
+          title="Confirmar eliminación"
+          message={
+            <>
+              ¿Estás seguro de que deseas eliminar el producto <strong>"{producto?.nombre}"</strong>?<br />
+              <span className="text-muted" style={{ fontSize: 13 }}>Esta acción no se puede deshacer. El producto será eliminado permanentemente.</span>
+            </>
+          }
+          onCancel={() => setShowModal(false)}
+          onConfirm={eliminarProducto}
+          confirmText="Sí, eliminar"
+          cancelText="Cancelar"
+          loading={cargando}
+        />
       </div>
-
-
-      <div style={{ display: 'flex', gap: '15px', justifyContent: 'center' }}>
-        <button
-          onClick={manejarEliminar}
-          disabled={cargando}
-          style={{
-            padding: '12px 24px',
-            backgroundColor: cargando ? '#ccc' : '#dc3545',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: cargando ? 'not-allowed' : 'pointer',
-            fontSize: '16px'
-          }}
-        >
-          {cargando ? 'Eliminando...' : 'Sí, Eliminar'}
-        </button>
-       
-        <button
-          onClick={cancelarEdicion}
-          disabled={cargando}
-          style={{
-            padding: '12px 24px',
-            backgroundColor: cargando ? '#ccc' : '#6c757d',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: cargando ? 'not-allowed' : 'pointer',
-            fontSize: '16px'
-          }}
-        >
-          Cancelar
-        </button>
-      </div>
-      
-      <ConfirmModal
-        show={showModal}
-        title="Confirmar eliminación"
-        message={
-          <>
-            ¿Estás seguro de que deseas eliminar el producto <strong>"{producto?.nombre}"</strong>?<br/>
-            <span style={{ color: '#666', fontSize: 13 }}>Esta acción no se puede deshacer.</span>
-          </>
-        }
-        onCancel={() => setShowModal(false)}
-        onConfirm={eliminarProducto}
-        confirmText="Sí, eliminar"
-        cancelText="Cancelar"
-        loading={cargando}
-      />
-    
     </div>
   );
 } export default EliminarProducto;
+
+const BotonEliminar = styled.button`
+  flex: 1;
+  background: #EC3939;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.55rem 1rem;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  transition: background 0.2s;
+
+  &:hover {
+    background: #d12d2dff;
+  }
+`;
+
+const BotonCancelar = styled.button`
+  flex: 1;
+  background: #8597c5ff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.55rem 1rem;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  transition: background 0.2s;
+
+  &:hover {
+    background: #6d88ceff;
+  }
+`;

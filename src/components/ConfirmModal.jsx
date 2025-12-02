@@ -35,7 +35,7 @@ export default function ConfirmModal({
         <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end', marginTop: 18 }}>
           <button
             onClick={onCancel}
-            style={{ padding: '10px 16px', background: '#6c757d', color: '#fff', border: 'none', borderRadius: 6 }}
+            style={{ padding: '10px 16px', background: '#8597c5ff', color: '#fff', border: 'none', borderRadius: 6 }}
             disabled={loading}
           >
             {cancelText}

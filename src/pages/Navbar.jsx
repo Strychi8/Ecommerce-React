@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../context/AuthContext';
 import { useCartContext } from '../context/CartContext';
 import styled from 'styled-components';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart, FaSignOutAlt } from 'react-icons/fa';
 
 function Navbar() {
 
@@ -59,7 +59,7 @@ function Navbar() {
                   <span className="me-1">Carrito</span>
                   <FaShoppingCart />  
                   {totalItemsCarrito > 0 && (
-                    <ContadorCarrito>
+                    <ContadorCarrito className='bg-primary'>
                       {totalItemsCarrito}
                     </ContadorCarrito>
                   )}
@@ -75,7 +75,7 @@ function Navbar() {
                   )}
                  
                   <BotonCerrarSesion onClick={manejarCerrarSesion} className="btn btn-sm">
-                    Cerrar Sesión
+                    Cerrar Sesión <FaSignOutAlt /> 
                   </BotonCerrarSesion>
                 </ContenedorUsuario>
               ) : (
@@ -202,6 +202,9 @@ const Bienvenida = styled.span`
 `;
 
 const BotonCerrarSesion = styled.button`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   background: transparent;
   font-weight: 600;
   color: #DC3545;

@@ -6,11 +6,12 @@ import styled from 'styled-components';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { formatMoney, parsePrice } from '../utils/formatters';
+import { FaTrashAlt } from "react-icons/fa";
 
 
 export default function Pagar() {
   const { usuario } = useAuthContext();
-  const { carrito, total, vaciarCarrito, agregarCantidad, quitarCantidad } = useCartContext();
+  const { carrito, total, vaciarCarrito, agregarCantidad, quitarCantidad, eliminarDelCarrito } = useCartContext();
   const navigate = useNavigate();
 
   // Función para finalizar compra
@@ -63,6 +64,14 @@ export default function Pagar() {
                         </div>
                             <div className="text-end">
                               <div className="d-flex align-items-center justify-content-end gap-2">
+                                <BotonEliminar
+                                  onClick={() => {
+                                      eliminarDelCarrito(producto.id);
+                                      toast.success("Producto eliminado del carrito");
+                                  }}
+                                >
+                                  <FaTrashAlt />
+                                </BotonEliminar>
                                 <BotonCantidad
                                   aria-label={`Quitar una unidad de ${producto.nombre}`}
                                   onClick={() => quitarCantidad(producto.id)}
@@ -134,5 +143,23 @@ const BotonCantidad = styled.button`
   &:disabled {
     opacity: 0.6;
     pointer-events: none;
+  }
+`;
+
+const BotonEliminar = styled.button`
+  background-color: transparent;
+  color: #dc3545;
+  border: none;
+  padding: 0;
+  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1;
+  margin-right: 1rem;
+
+  &:hover {
+    color: #a71d2aff;
   }
 `;

@@ -105,7 +105,7 @@ function FormularioProducto() {
     <div className="login-bg d-flex align-items-center justify-content-center">
       <div className="login-card shadow-sm" style={{ maxWidth: 600, width: '100%' }}>
         <div className="text-center mb-2 p-3">
-          <h2 className="mt-1">{modo === 'editar' ? 'Editar' : 'Agregar'} Producto</h2>
+          <h2 className="mt-1">{modo === 'editar' ? 'Editar' : 'Crear Nuevo'} Producto</h2>
           {modo === 'editar' && productoRecibido && (
             <p style={{ marginBottom: 0 }}>Editando: {productoRecibido.nombre} (ID: {productoRecibido.id})</p>
           )}
@@ -123,7 +123,7 @@ function FormularioProducto() {
               disabled={cargando}
               placeholder="Ingrese el nombre del producto"
             />
-            {errores.nombre && <div>{errores.nombre}</div>}
+            {errores.nombre && <div className="invalid-feedback d-block fw-bold">{errores.nombre}</div>}
           </div>
 
           <div className="mb-3">
@@ -139,7 +139,7 @@ function FormularioProducto() {
               inputMode="decimal"
             />
             <div className="campos-vacios">Formato argentino: punto para miles, sin decimales.</div>
-            {errores.precio && <div>{errores.precio}</div>}
+            {errores.precio && <div className="invalid-feedback d-block fw-bold">{errores.precio}</div>}
           </div>
 
           <div className="mb-3">
@@ -181,12 +181,12 @@ function FormularioProducto() {
               placeholder="Mínimo 10 caracteres, máximo 200 caracteres"
             />
             <div className='campos-vacios'>{producto.descripcion.length}/200 caracteres</div>
-            {errores.descripcion && <div>{errores.descripcion}</div>}
+            {errores.descripcion && <div className="invalid-feedback d-block fw-bold">{errores.descripcion}</div>}
           </div>
 
           <div className="d-flex gap-2 mb-3">
             <BotonGuardar type="submit" disabled={cargando}>
-              {cargando ? (modo === 'editar' ? 'Actualizando...' : 'Agregando...') : (modo === 'editar' ? 'Confirmar Cambios' : 'Agregar Producto')}
+              {cargando ? (modo === 'editar' ? 'Actualizando...' : 'Agregando...') : (modo === 'editar' ? 'Confirmar Cambios' : 'Crear Producto')}
             </BotonGuardar>
 
             <BotonCancelar type="button" onClick={cancelarEdicion} disabled={cargando}>

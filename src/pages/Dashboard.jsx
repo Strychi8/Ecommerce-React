@@ -56,11 +56,13 @@ export default function Dashboard() {
 
         <div className="card">
           <div className="card-body">
-            <h2 className="card-title text-center my-3 fw-bold fs-4">Productos totales</h2>
+            <h2 className="card-title text-center my-3 fw-bold fs-4">
+              Productos totales ({productos.length})
+            </h2>
               <div className="d-flex gap-2 mb-3">
                 <BotonAgregar onClick={manejarAgregarProducto} aria-label="Agregar nuevo producto">
-                  <FaPlus size={16} />
-                  <span>Agregar Nuevo Producto</span>
+                  <FaPlus />
+                  <span>Nuevo Producto</span>
                 </BotonAgregar>
                 <BotonRefrescar onClick={manejarRefresh} aria-label="Refrescar lista">Refrescar</BotonRefrescar>
               </div>

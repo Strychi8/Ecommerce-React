@@ -133,7 +133,7 @@ const VerDetalle = styled(Link)`
   background: transparent;
   line-height: 1;
   transition: background 0.3s, color 0.3s;
-  &:hover { background: #0b8793; color: #fff; text-decoration: none; }
+  &:hover { background: linear-gradient(180deg,#1b4d7a,#153856); color: #fff; text-decoration: none; }
 `;
 
 const BotonEditar = styled.button`
@@ -195,5 +195,5 @@ const BotonRefrescar = styled.button`
   cursor: pointer;
   line-height: 1;
   transition: background 0.3s ,color 0.3s;
-  &:hover { background: #0b8793; color: #fff; }
+  &:hover { background: linear-gradient(180deg,#1b4d7a,#153856); color: #fff; }
 `;

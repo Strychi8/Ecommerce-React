@@ -6,24 +6,19 @@ function FormularioContacto() {
     <div className="login-bg d-flex align-items-center justify-content-center">
       <div className="login-card shadow-sm">
         <div className="text-center mb-3">
-          <h3 className="mt-5">Contáctanos</h3>
+          <h2 className="mt-5">Contáctanos</h2>
           <p>Envíanos tu consulta y con gusto te ayudaremos.</p>
         </div>
 
         <form action="https://formspree.io/f/xkgjlnkl" method="POST" className="p-4">
           <div className="mb-3">
-            <label className="form-label" htmlFor="nombre">Nombre:</label>
-            <input className="form-control" placeholder="Nombre" type="text" id="nombre" name="nombre" required />
-          </div>
-
-          <div className="mb-3">
-            <label className="form-label" htmlFor="apellido">Apellido:</label>
-            <input className="form-control" placeholder="Apellido" type="text" id="apellido" name="apellido" required />
+            <label className="form-label" htmlFor="nombre">Nombre Completo:</label>
+            <input className="form-control" placeholder="Ej: Juan Pérez" type="text" id="nombre" name="nombre" required />
           </div>
 
           <div className="mb-3">
             <label className="form-label" htmlFor="email">Email:</label>
-            <input className="form-control" placeholder="Email" type="email" id="email" name="email" required />
+            <input className="form-control" placeholder="Ej: juan.perez@example.com" type="email" id="email" name="email" required />
           </div>
 
           <div className="mb-3">

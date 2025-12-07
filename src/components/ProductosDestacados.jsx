@@ -31,7 +31,7 @@ export default function ProductosDestacados({ title = 'Productos Destacados' }) 
                 </div>
               )}
               <div className="card-body p-2 d-flex flex-column">
-                <h5 className="card-title text-center">{producto.nombre}</h5>
+                <h4 className="card-title text-center fs-5">{producto.nombre}</h4>
                 <div className="mt-auto">
                   <p className="card-text fs-5 fw-bold text-primary text-center mb-2">{formatMoney(producto.precio)}</p>
                   <div className="d-grid gap-2">

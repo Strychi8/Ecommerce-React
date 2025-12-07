@@ -100,6 +100,10 @@ const NavbarContainer = styled.nav`
   /* Asegura que el área colapsable del menú también tenga el fondo oscuro */
   .navbar-collapse {
     background-color: #121c2bff;
+    /* Forzar color claro en los enlaces dentro del área colapsada para buen contraste */
+    .nav-link {
+      color: #F2F0EC !important;
+    }
   }
 
   /* Ajustes para el menú colapsado en móviles: centrar enlaces */
@@ -202,17 +206,17 @@ const Bienvenida = styled.span`
 `;
 
 const BotonCerrarSesion = styled.button`
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
   background: transparent;
-  font-weight: 600;
   color: #DC3545;
   border: 1px solid #DC3545;
   border-radius: 4px;
   padding: 0.5rem 1rem;
+  font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
  
   &:hover {
     background: #DC3545;
@@ -226,17 +230,18 @@ const BotonCerrarSesion = styled.button`
 
 const BotonIniciarSesion = styled(Link)`
   background: transparent;
-  color: #29903B !important;
+  color: #29903B;
   border: 1px solid #29903B;
   border-radius: 4px;
   padding: 0.5rem 1rem;
+  font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
   text-decoration: none;
 
   &:hover {
     background: #29903B;
-    color: #F2F0EC !important;
+    color: #F2F0EC;
   }
 
   @media (max-width: 991.98px) {

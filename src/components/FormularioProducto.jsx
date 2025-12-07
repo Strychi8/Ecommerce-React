@@ -45,7 +45,7 @@ function FormularioProducto() {
     const { name, value } = e.target;
    
     // Valida longitud max. descripción
-    if (name === 'descripcion' && value.length > 200) return;
+    if (name === 'descripcion' && value.length > 1000) return;
    
     setProducto(prev => ({ ...prev, [name]: value }));
    
@@ -177,10 +177,10 @@ function FormularioProducto() {
               onChange={manejarCambio}
               rows="4"
               disabled={cargando}
-              maxLength="200"
-              placeholder="Mínimo 10 caracteres, máximo 200 caracteres"
+              maxLength="1000"
+              placeholder="Mínimo 10 caracteres, máximo 1000 caracteres"
             />
-            <div className='campos-vacios'>{producto.descripcion.length}/200 caracteres</div>
+            <div className='campos-vacios'>{producto.descripcion.length}/1000 caracteres</div>
             {errores.descripcion && <div className="invalid-feedback d-block fw-bold">{errores.descripcion}</div>}
           </div>
 

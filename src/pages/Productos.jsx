@@ -98,7 +98,7 @@ export default function Productos() {
         </div>
 
         {/* Grid de productos */}
-        <div className="row g-3 mt-4">
+        <div className="row g-3">
           {productosActuales.map((producto) => (
             <div key={producto.id} className="col-12 col-sm-6 col-md-4 col-lg-3">
               <div className="card h-100 shadow-sm producto-card">
@@ -113,11 +113,10 @@ export default function Productos() {
                     <span className="text-muted">Sin imagen</span>
                   </div>
                 )}
-                <div className="card-body d-flex flex-column">
-                  <h5 className="card-title">{producto.nombre}</h5>
-                  <p className="card-text flex-grow-1">{producto.descripcion}</p>
-                  <p className="card-text fw-bold text-primary">{formatMoney(producto.precio)}</p>
+                <div className="card-body p-2 d-flex flex-column">
+                  <h5 className="card-title text-center">{producto.nombre}</h5>
                   <div className="mt-auto">
+                    <p className="card-text fs-5 fw-bold text-primary text-center mb-2">{formatMoney(producto.precio)}</p>
                     <div className="d-grid gap-2">
                       <BotonVerMas to={`/productos/${producto.id}`} state={{ producto }}>Ver más</BotonVerMas>
                       <BotonAgregar onClick={() => agregarAlCarrito(producto)}><FaShoppingCart /> Agregar al carrito</BotonAgregar>

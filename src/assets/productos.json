@@ -1,84 +1,204 @@
 {
   "productos": [
     {
-    "nombre": "Auricular Gamer",
-    "descripcion": "Auricular Gamer Razer Barracuda X Chroma Negro Inalámbrico",
-    "marca": "Razer",
-    "avatar": "https://mexx-img-2019.s3.amazonaws.com/Auricular-Gamer-Razer-Barracuda-X-Chroma-Negro_49741_1.jpeg",
-    "precio": "220.000",
+    "nombre": "Auricular Gamer Redragon Cronus H211-RGB",
+    "descripcion": "Auricular Gamer Redragon Cronus H211-RGB",
+    "marca": "Redragon",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/Auricular-Gamer-Redragon-Cronus-H211-RGB_48366_1.jpeg",
+    "precio": "35.000",
     "createdAt": "2025-11-27T22:52:26.570Z",
     "modifiedAt": "2025-11-27T22:52:31.395Z",
     "id": "1"
   },
   {
-    "nombre": "Mouse Gamer",
-    "descripcion": "Mouse Gamer Inalámbrico Logitech G Pro X Superlight Negro",
+    "nombre": "Mouse Gamer Logitech G203 Lightsync Blanco",
+    "descripcion": "Mouse Gamer Logitech G203 Lightsync Blanco",
     "marca": "Logitech",
-    "avatar": "https://mexx-img-2019.s3.amazonaws.com/Mouse-Gamer-Logitech-G-Pro-X-Superlight-Negro_40418_1.jpeg",
-    "precio": "100.500",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/Mouse-Gamer-Logitech-G203-Lightsync-Blanco_38244_1.jpeg",
+    "precio": "27.000",
     "createdAt": "2025-11-27T22:52:26.570Z",
     "modifiedAt": "2025-11-27T22:52:31.395Z",
     "id": "2"
   },
   {
-    "nombre": "Silla Gamer",
+    "nombre": "Silla Gamer Redragon Gaia C211-BR Negro Rojo",
     "descripcion": "Silla Gamer Redragon Gaia C211-BR Negro Rojo",
     "marca": "Redragon",
     "avatar": "https://mexx-img-2019.s3.amazonaws.com/Silla-Gamer-Redragon-Gaia-C211-BR-Negro-Rojo_47453_1.jpeg",
-    "precio": "300.439",
+    "precio": "306.500",
     "createdAt": "2025-11-27T22:52:26.570Z",
     "modifiedAt": "2025-11-27T22:52:31.395Z",
     "id": "3"
   },
   {
-    "nombre": "Gabinete",
+    "nombre": "Gabinete Mid Tower Sentey R20 Rgb",
     "descripcion": "Gabinete Mid Tower Sentey R20 Rgb",
     "marca": "Sentey",
     "avatar": "https://mexx-img-2019.s3.amazonaws.com/Gabinete-Mid-Tower-Sentey-R20-Rgb_47178_1.jpeg",
-    "precio": "42.999",
+    "precio": "46.000",
     "createdAt": "2025-11-27T22:52:26.570Z",
     "modifiedAt": "2025-11-27T22:52:31.395Z",
     "id": "4"
   },
   {
-    "nombre": "Motherboard",
+    "nombre": "Motherboard AM4 - Msi B550M PRO VDH",
     "descripcion": "Motherboard AM4 - Msi B550M PRO VDH",
     "marca": "Msi",
     "avatar": "https://mexx-img-2019.s3.amazonaws.com/Motherboard-AM4-Msi-B550M-PRO-VDH_48396_1.jpeg",
-    "precio": "124.159",
+    "precio": "121.000",
     "createdAt": "2025-11-27T22:52:26.570Z",
     "modifiedAt": "2025-11-27T22:52:31.395Z",
     "id": "5"
   },
   {
-    "nombre": "Teclado Gamer",
+    "nombre": "Teclado Gamer Redragon K551 Mitra Rgb Negro Switch Red",
     "descripcion": "Teclado Gamer Redragon K551 Mitra Rgb Negro Switch Red",
     "marca": "Redragon",
     "avatar": "https://mexx-img-2019.s3.amazonaws.com/Teclado-Gamer-Redragon-K551-Mitra-Rgb-NegrO_45904_8.jpeg?v747",
-    "precio": "60.000",
+    "precio": "63.000",
     "createdAt": "2025-11-27T22:52:26.570Z",
     "modifiedAt": "2025-11-27T22:52:31.395Z",
     "id": "6"
   },
   {
-    "nombre": "Fuente de Poder",
+    "nombre": "Fuente Sentey MBP600-GS 600W 80 Plus Bronze",
     "descripcion": "Fuente Sentey MBP600-GS 600W 80 Plus Bronze",
     "marca": "Sentey",
     "avatar": "https://mexx-img-2019.s3.amazonaws.com/Fuente-Sentey-MBP600-GS-600W-80-Plus-Bronze_49952_1.jpeg",
-    "precio": "70.999",
+    "precio": "71.000",
     "createdAt": "2025-11-27T22:52:26.570Z",
     "modifiedAt": "2025-11-27T22:52:31.395Z",
     "id": "7"
   },
   {
-    "nombre": "Gabinete",
+    "nombre": "Gabinete Mid Tower Xpg Valor Air White 4 Fan Vidrio Templado",
     "descripcion": "Gabinete Mid Tower Xpg Valor Air White 4 Fan Vidrio Templado",
     "marca": "Xpg",
     "avatar": "https://mexx-img-2019.s3.amazonaws.com/Gabinete-Mid-Tower-XPG-Valor-Air-White-4-Fan-Vidrio-Templado_47227_1.jpeg",
-    "precio": "67.499",
+    "precio": "71.000",
     "createdAt": "2025-11-27T22:52:26.570Z",
     "modifiedAt": "2025-11-27T22:52:31.395Z",
     "id": "8"
+  },
+  {
+    "nombre": "Auricular Gamer Redragon Zeus X H510W Rgb Usb Blanco",
+    "descripcion": "Auricular Gamer Redragon Zeus X H510W Rgb Usb Blanco",
+    "marca": "Redragon",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/46312_1.jpeg",
+    "precio": "101.639",
+    "createdAt": "2025-12-7T22:52:26.570Z",
+    "modifiedAt": "2025-12-7T22:52:31.395Z",
+    "id": "9"
+  },
+  {
+    "nombre": "Fuente Thermaltake Smart D2D 600W 80 Plus White",
+    "descripcion": "Fuente Thermaltake Smart D2D 600W 80 Plus White",
+    "marca": "Thermaltake",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/Fuente-Thermaltake-Smart-D2D-600W-80-Plus-WhitE_49350_1.jpeg",
+    "precio": "86.000",
+    "createdAt": "2025-12-7T22:52:26.570Z",
+    "modifiedAt": "2025-12-7T22:52:31.395Z",
+    "id": "10"
+  },
+  {
+    "nombre": "Fuente Aerocool Cylon 600W Rgb 80 Plus Bronze",
+    "descripcion": "Fuente Aerocool Cylon 600W Rgb 80 Plus Bronze",
+    "marca": "Aerocool",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/37711_1.jpeg?v792",
+    "precio": "82.000",
+    "createdAt": "2025-12-7T22:52:26.570Z",
+    "modifiedAt": "2025-12-7T22:52:31.395Z",
+    "id": "11"
+  },
+  {
+    "nombre": "Gabinete Mini Tower Aerocool Cylon Mini Rgb 1 Fan",
+    "descripcion": "Gabinete Mini Tower Aerocool Cylon Mini Rgb 1 Fan",
+    "marca": "Aerocool",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/Gabinete-Mid-Tower-Aerocool-Cylon-1-Fan-Vidrio-Templado_48059_1.jpeg",
+    "precio": "46.000",
+    "createdAt": "2025-12-7T22:52:26.570Z",
+    "modifiedAt": "2025-12-7T22:52:31.395Z",
+    "id": "12"
+  },
+  {
+    "nombre": "Gabinete Mid Tower Aerocool Pivot 3 Fan Argb Vidrio Templado",
+    "descripcion": "Gabinete Mid Tower Aerocool Pivot 3 Fan Argb Vidrio Templado",
+    "marca": "Aerocool",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/Gabinete-Mid-Tower-Aerocool-Pivot-3-Fan-Argb-Vidrio-Templado_48054_7.jpeg?v21",
+    "precio": "58.000",
+    "createdAt": "2025-12-7T22:52:26.570Z",
+    "modifiedAt": "2025-12-7T22:52:31.395Z",
+    "id": "13"
+  },
+  {
+    "nombre": "Monitor Led 19'' X-Micro Hdmi Vga 75Hz 5Ms X19KN",
+    "descripcion": "Monitor Led 19'' X-Micro Hdmi Vga 75Hz 5Ms X19KN",
+    "marca": "X-Micro",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/49731_5.jpeg?v440",
+    "precio": "74.169",
+    "createdAt": "2025-12-7T22:52:26.570Z",
+    "modifiedAt": "2025-12-7T22:52:31.395Z",
+    "id": "14"
+  },
+  {
+    "nombre": "Monitor Gamer 24'' Level Up Full Hd 180Hz 24-UP5580",
+    "descripcion": "Monitor Gamer 24'' Level Up Full Hd 180Hz 24-UP5580",
+    "marca": "Level Up",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/Monitor-Gamer-24-Level-Up-Full-Hd-180Hz-24-uP5580_49599_1.jpeg",
+    "precio": "197.629",
+    "createdAt": "2025-12-7T22:52:26.570Z",
+    "modifiedAt": "2025-12-7T22:52:31.395Z",
+    "id": "15"
+  },
+  {
+    "nombre": "Silla Gamer Redragon Gaia C211-B Negro",
+    "descripcion": "Silla Gamer Redragon Gaia C211-B Negro",
+    "marca": "Redragon",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/Silla-Gamer-Redragon-Gala-C211-B-Negro_46662_1.jpeg",
+    "precio": "308.189",
+    "createdAt": "2025-12-7T22:52:26.570Z",
+    "modifiedAt": "2025-12-7T22:52:31.395Z",
+    "id": "16"
+  },
+  {
+    "nombre": "Teclado Gamer Redragon K552 Kumara Rainbow Switch Red",
+    "descripcion": "Teclado Gamer Redragon K552 Kumara Rainbow Switch Red",
+    "marca": "Redragon",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/Teclado-Gamer-Redragon-K552-Kumara-RGB-Rainbow-Red_41191_1.jpeg",
+    "precio": "50.000",
+    "createdAt": "2025-12-7T22:52:26.570Z",
+    "modifiedAt": "2025-12-7T22:52:31.395Z",
+    "id": "17"
+  },
+  {
+    "nombre": "Disco Solido Ssd 480Gb Western Digital WD Green",
+    "descripcion": "Disco Solido Ssd 480Gb Western Digital WD Green",
+    "marca": "Western Digital",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/35581_1.jpeg",
+    "precio": "76.000",
+    "createdAt": "2025-12-7T22:52:26.570Z",
+    "modifiedAt": "2025-12-7T22:52:31.395Z",
+    "id": "18"
+  },
+  {
+    "nombre": "Motherboard AM4 - Asus Prime A520M-A II",
+    "descripcion": "Motherboard AM4 - Asus Prime A520M-A II",
+    "marca": "Asus",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/Motherboard-Am4-Asus-Prime-A520m-A-II_45490_1.jpeg",
+    "precio": "125.000",
+    "createdAt": "2025-12-7T22:52:26.570Z",
+    "modifiedAt": "2025-12-7T22:52:31.395Z",
+    "id": "19"
+  },
+  {
+    "nombre": "Motherboard AM4 - Asus Prime A520M-K",
+    "descripcion": "Motherboard AM4 - Asus Prime A520M-K",
+    "marca": "Asus",
+    "avatar": "https://mexx-img-2019.s3.amazonaws.com/38400_1.jpeg",
+    "precio": "86.000",
+    "createdAt": "2025-12-7T22:52:26.570Z",
+    "modifiedAt": "2025-12-7T22:52:31.395Z",
+    "id": "20"
   }
   ]
 }

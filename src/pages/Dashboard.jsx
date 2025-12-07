@@ -3,7 +3,7 @@ import { useAuthContext } from '../context/AuthContext';
 import { useProducts } from '../context/ProductsContext';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { FaPlus } from 'react-icons/fa';
+import { FaPlus, FaPen, FaTrashAlt } from 'react-icons/fa';
 import { formatMoney, formatDateShort } from '../utils/formatters';
 
 
@@ -104,8 +104,8 @@ export default function Dashboard() {
                         <td>
                           <div className="d-flex gap-2">
                             <VerDetalle to={`/productos/${producto.id}`} state={{producto}}>Ver</VerDetalle>
-                            <BotonEditar onClick={() => manejarEditar(producto)}>Editar</BotonEditar>
-                            <BotonEliminar onClick={() => manejarEliminar(producto)}>Eliminar</BotonEliminar>
+                            <BotonEditar onClick={() => manejarEditar(producto)}><FaPen /></BotonEditar>
+                            <BotonEliminar onClick={() => manejarEliminar(producto)}><FaTrashAlt /></BotonEliminar>
                           </div>
                         </td>
                       </tr>
@@ -121,7 +121,6 @@ export default function Dashboard() {
   );
 }
 
-// Styled components para los botones del dashboard
 const VerDetalle = styled(Link)`
   display: inline-block;
   padding: .50rem .5rem;

@@ -38,8 +38,8 @@ export const ProductsProvider = ({ children }) => {
       errores.descripcion = 'La descripción es obligatoria.';
     } else if (producto.descripcion.length < 10) {
       errores.descripcion = 'Mínimo 10 caracteres.';
-    } else if (producto.descripcion.length > 200) {
-      errores.descripcion = 'Máximo 200 caracteres.';
+    } else if (producto.descripcion.length > 1000) {
+      errores.descripcion = 'Máximo 1000 caracteres.';
     }
 
     return errores;

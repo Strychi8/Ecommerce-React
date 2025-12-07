@@ -17,21 +17,26 @@ export default function ProductosDestacados({ title = 'Productos Destacados' }) 
       <h3 className="mb-4 text-center">{title}</h3>
       <div className="row g-3">
         {destacados.map(producto => (
-          <div key={producto.id} className="col-6 col-md-3">
+          <div key={producto.id} className="col-12 col-sm-6 col-md-4 col-lg-3">
             <div className="card h-100 shadow-sm producto-card">
               {producto.avatar ? (
-                <img src={producto.avatar} alt={producto.nombre} className="card-img-top producto-img" />
+                <img 
+                  src={producto.avatar} 
+                  alt={producto.nombre} 
+                  className="card-img-top producto-img" 
+                />
               ) : (
                 <div className="bg-light d-flex align-items-center justify-content-center" style={{ height: 140 }}>
                   <span className="text-muted">Sin imagen</span>
                 </div>
               )}
               <div className="card-body p-2 d-flex flex-column">
-                <h6 className="card-title mb-1" style={{ fontSize: '0.95rem' }}>{producto.nombre}</h6>
-                <p className="text-truncate mb-2" style={{ maxHeight: '2.4rem' }}>{producto.descripcion}</p>
-                <p className="text-primary mb-2" style={{ fontWeight: 700 }}>{formatMoney(producto.precio)}</p>
-                <div className="mt-auto d-flex">
-                  <BotonVerMas to={`/productos/${producto.id}`} state={{ producto }}>Ver más</BotonVerMas>
+                <h5 className="card-title text-center">{producto.nombre}</h5>
+                <div className="mt-auto">
+                  <p className="card-text fs-5 fw-bold text-primary text-center mb-2">{formatMoney(producto.precio)}</p>
+                  <div className="d-grid gap-2">
+                    <BotonVerMas to={`/productos/${producto.id}`} state={{ producto }}>Ver más</BotonVerMas>
+                  </div>
                 </div>
               </div>
             </div>
@@ -43,6 +48,9 @@ export default function ProductosDestacados({ title = 'Productos Destacados' }) 
 }
 
 const BotonVerMas = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: #1c3152ff;
   color: #fff;
   border: none;
